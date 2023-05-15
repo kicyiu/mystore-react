@@ -1,0 +1,30 @@
+.siteSearch {
+    width: 22%;
+    float: right;
+}
+
+.productSearchDiv {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.siteSearch .productSearchDiv input[type=search] {
+    width: 100%;
+    padding: 1.4em 1.4em 1.4em 2.5em;
+    line-height: 1;
+    background-color: #f2f2f2;
+    color: #43454b;
+    border: 0;
+    font-weight: 400;
+}
+
+.siteSearch .productSearchDiv input[type=search]:focus {
+    outline-color: #7f54b3;
+}
+
+.siteSearch .productSearchDiv .searchIcon {
+    position: absolute;
+    left: 10px;
+    color: #43454b;
+}
