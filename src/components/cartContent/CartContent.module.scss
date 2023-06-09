@@ -1,0 +1,22 @@
+.cartContainer {
+    display: flex;
+    width: 22%;
+    position: relative;
+    align-items: center;
+}
+
+.cartIcon {
+    position: absolute;
+    right: 0px;
+}
+
+.cartTotal {
+    padding-right: 10px;
+}
+
+.itemsCount {
+    font-weight: 400;
+    opacity: .5;
+    font-size: 0.875em;
+
+}

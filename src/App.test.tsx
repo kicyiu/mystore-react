@@ -1,9 +1,11 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 
-test.skip('renders learn react link', () => {
+
+it('should render footer element', () => {
   render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  const footerElement = screen.getByRole('contentinfo');
+  expect(footerElement).toBeInTheDocument();
 });

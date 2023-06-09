@@ -1,18 +1,21 @@
 import React from "react";
 import classes from "./Header.module.scss";
+import SiteBranding from "../siteBranding/SiteBranding";
 import SearchBar from "../searchBar/SearchBar";
+import CartContent from "../cartContent/CartContent";
 import NavBar from "../navbar/NavBar";
 
 function Header() {
   return (
-    <header>
-        <div className={classes.colFull}>
-            <div className={classes.siteBranding}>
-                <a href="/">mystore</a>
-            </div>
+    <header className={classes.headerContainer}>
+        <div className={`${classes.brandingContainer} ${classes.colFull}`}>
+            <SiteBranding />
             <SearchBar />
         </div>
-        <NavBar />
+        <div className={`${classes.colFull} ${classes.navBarContainer}`}>
+            <NavBar />
+            <CartContent />
+        </div>
     </header>
   );
 }

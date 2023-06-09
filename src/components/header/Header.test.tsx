@@ -3,16 +3,10 @@ import { render, screen } from '@testing-library/react'
 import Header from './Header';
 
 describe('Header', () => {
-    it('should renders page name', () => {
+    it('should render page name', () => {
         render(<Header />);
-        const pageNameLink = screen.getByRole('link', { name: 'mystore' });
-        expect(pageNameLink).toBeInTheDocument();
-    });
-
-    it('should be redirected to home page when click on page name', () => {
-        render(<Header />);
-        const pageNameLink = screen.getByRole('link', { name: 'mystore' });
-        expect(pageNameLink).toHaveAttribute('href', '/');
+        const siteBrandingLink = screen.getByTestId('site-branding-container');
+        expect(siteBrandingLink).toBeInTheDocument();
     });
 
     it('should render search input', () => {
@@ -25,5 +19,11 @@ describe('Header', () => {
         render(<Header />);
         const navbarElement = screen.getByRole("navigation");
         expect(navbarElement).toBeInTheDocument();
+    });
+
+    it('shoud render cart content and icon', () => {
+        render(<Header />);
+        const cartContentContainer = screen.getByTestId('cart-content-container');
+        expect(cartContentContainer).toBeInTheDocument();
     });
 });

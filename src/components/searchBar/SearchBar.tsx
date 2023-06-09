@@ -8,7 +8,7 @@ function SearchBar() {
         <div className={classes.siteSearch}>
             <div className={classes.productSearchDiv}>
                 <input className={classes.searchInput} type="search" placeholder="Search products..."/>
-                <FontAwesomeIcon className={classes.searchIcon} icon={faMagnifyingGlass}/>
+                <FontAwesomeIcon className={classes.searchIcon} icon={faMagnifyingGlass} title="searchIcon" />
             </div>
         </div>
     );
