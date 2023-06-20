@@ -15,16 +15,16 @@ describe('Home', () => {
         expect(cardDivElement).toBeInTheDocument();
     });
     
-    test("product cards div cointainer should have 'card-columns m-5 animated fadeIn' classes", () => {
+    test("product cards div cointainer should have 'animated fadeIn' classes", () => {
         render(<Home />);
         const cardDivElement = screen.getByTestId('product-card-container');
-        expect(cardDivElement).toHaveClass("card-columns m-5 animated fadeIn");
+        expect(cardDivElement).toHaveClass("animated fadeIn");
     });
 
     it("shoud render Product Card", () => {
         render(<Home />);
         const cardDivElement = screen.getByTestId('product-card-container');
-        const productCardElement = within(cardDivElement).getByTestId('product-card');
-        expect(productCardElement).toBeInTheDocument();
+        const productCardElements = within(cardDivElement).getAllByTestId('product-card');
+        expect(productCardElements.length).toBeGreaterThan(0);
     });
 });

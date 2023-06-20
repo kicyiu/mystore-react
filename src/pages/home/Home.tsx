@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import Masonry from "react-masonry-css";
+import appClasses from "../../App.module.scss";
 import classes from './Home.module.scss';
 import ProductCard from "../../components/productCard/ProductCard";
 
@@ -11,12 +12,22 @@ function Home() {
             </header>
             <Masonry 
                 data-testid="product-card-container"
-                //className="card-columns m-5 animated fadeIn"
                 breakpointCols={4}
-                className={classes.masonryGrid}
+                className={`${classes.masonryGrid} ${appClasses.animated} ${appClasses.fadeIn}`}
                 columnClassName={classes.masonryGridColumn}
             >
-                <ProductCard />
+                <ProductCard 
+                    src="http://mystore.local/wp-content/uploads/2019/01/hoodie-with-pocket-2.jpg"
+                    name="Hoodie with pocket"
+                    price={30}
+                    regular_price={40}
+                />
+
+<ProductCard 
+                    src="http://mystore.local/wp-content/uploads/2019/01/hoodie-with-pocket-2.jpg"
+                    name="Hoodie with pocket"
+                    price={30}
+                />
 
             </Masonry>
         </Fragment>

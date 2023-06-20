@@ -1,14 +1,27 @@
 import React from "react";
 import classes from "./ProductCard.module.scss"
+import { Button } from "react-bootstrap";
+import { ProductCardProps } from "./ProductCard.interface";
 
-function ProductCard() {
+function ProductCard({ 
+    src, 
+    name, 
+    price, 
+    regular_price 
+}: ProductCardProps) {
     return (
         <div data-testid="product-card" className="card">
-            <img src="http://mystore.local/wp-content/uploads/2019/01/hoodie-with-pocket-2.jpg" alt="..." />
+            <img src={src} alt="..." />
             <div data-testid="product-card-body" className={`${classes.cardBodyCont} card-body`}>
-                <h5 className="card-title ">Hoodie with Pocket</h5>
+                <h5 className="card-title ">{ name }</h5>
                 <span data-testid="sales-indicator" className={classes.salesIndicator}>Sale!</span>
-                <div data-testid="product-price">$20</div>
+                <div>
+                    {regular_price && (
+                        <del data-testid="regular-price" className={classes.regularPrice}>${ regular_price }</del>
+                    )}
+                    <span data-testid="current-price" className={classes.currentPrice}>${ price }</span>
+                </div>
+                <Button className={`btn btn-light ${classes.addToCartBtn}`}>Add to cart</Button>
             </div>
         </div>
     );

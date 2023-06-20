@@ -14,7 +14,7 @@ function App() {
 	return (
 		<Router >
 			<Header />
-			<div className={classes.content}>
+			<div className={`${classes.content}`}>
 				<Routes >
 					<Route path='/home' element={<Home />} />
 					<Route path='/' element={<Navigate to='/home' />} />
