@@ -7,16 +7,23 @@ function ProductCard({
     src, 
     name, 
     price, 
-    regular_price 
+    regular_price,
+    sale_price 
 }: ProductCardProps) {
+
+    let salesIndicatorClasses = classes.salesIndicator;
+    if (!sale_price) {
+        salesIndicatorClasses = `${classes.salesIndicator} ${classes.salesIndicatorHidden}`
+    }
+
     return (
         <div data-testid="product-card" className="card">
             <img src={src} alt="..." />
             <div data-testid="product-card-body" className={`${classes.cardBodyCont} card-body`}>
                 <h5 className="card-title ">{ name }</h5>
-                <span data-testid="sales-indicator" className={classes.salesIndicator}>Sale!</span>
+                <span data-testid="sales-indicator" className={salesIndicatorClasses}>Sale!</span>
                 <div>
-                    {regular_price && (
+                    {sale_price && (
                         <del data-testid="regular-price" className={classes.regularPrice}>${ regular_price }</del>
                     )}
                     <span data-testid="current-price" className={classes.currentPrice}>${ price }</span>

@@ -1,6 +1,7 @@
 export interface ProductCardProps {
     src: string;
     name: string;
-    price: number;
-    regular_price?: number;
+    price: string;
+    regular_price?: string;
+    sale_price?: string;
 }

@@ -1,11 +1,10 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
 
-it('should render footer element', () => {
+it('should render footer element', async () => {
   render(<App />);
-  const footerElement = screen.getByRole('contentinfo');
+  const footerElement = await waitFor(() => screen.findByRole('contentinfo'));
   expect(footerElement).toBeInTheDocument();
 });

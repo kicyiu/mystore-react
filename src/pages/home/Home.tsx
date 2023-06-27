@@ -1,10 +1,27 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Masonry from "react-masonry-css";
 import appClasses from "../../App.module.scss";
 import classes from './Home.module.scss';
 import ProductCard from "../../components/productCard/ProductCard";
+import { GetProductsRequest } from "./Home.interface";
+import axios from "axios";
+
 
 function Home() {
+
+    const [products, setProducts] = useState<GetProductsRequest[]>([]);
+
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
+    const fetchProducts = async () => {
+
+        const { data } = await axios.get('http://localhost:5000/products');
+        setProducts(data);
+    }
+
     return (
         <Fragment >
             <header className={classes.pageHeader}>
@@ -16,19 +33,17 @@ function Home() {
                 className={`${classes.masonryGrid} ${appClasses.animated} ${appClasses.fadeIn}`}
                 columnClassName={classes.masonryGridColumn}
             >
-                <ProductCard 
-                    src="http://mystore.local/wp-content/uploads/2019/01/hoodie-with-pocket-2.jpg"
-                    name="Hoodie with pocket"
-                    price={30}
-                    regular_price={40}
-                />
+                {products.map((product) => (
+                    <ProductCard
+                        key={product.id} 
+                        src={product.images[0].src}
+                        name={product.name}
+                        price={product.price}
+                        regular_price={product.regular_price}
+                        sale_price={product.sale_price}
+                    />
 
-<ProductCard 
-                    src="http://mystore.local/wp-content/uploads/2019/01/hoodie-with-pocket-2.jpg"
-                    name="Hoodie with pocket"
-                    price={30}
-                />
-
+                ))}
             </Masonry>
         </Fragment>
     );
