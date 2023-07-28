@@ -101,6 +101,8 @@ describe('ProductCard', () => {
         expect(buttonElement).toBeInTheDocument();
     });
 
+    
+
 
 
 });
