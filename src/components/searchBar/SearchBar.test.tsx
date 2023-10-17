@@ -5,7 +5,9 @@ import SearchBar from "./SearchBar";
 describe('SearchBar', () => {
     it("should render a search product input with place holder text: 'Search products...'", () => {
         render(<SearchBar />);
-        const searchInput = screen.getByPlaceholderText(/Search products.../i);
+        //const searchInput = screen.getByPlaceholderText(/Search products.../i);
+        const searchInput = screen.getByRole('searchbox');
+        expect(searchInput).toHaveAttribute('placeholder', 'Search products...');
         expect(searchInput).toBeInTheDocument();
     });
 

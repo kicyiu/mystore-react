@@ -18,7 +18,7 @@ function Home() {
 
     const fetchProducts = async () => {
 
-        const { data } = await axios.get('http://localhost:5000/products');
+        const { data } = await axios.get('http://localhost:8000/products');
         setProducts(data);
     }
 
@@ -35,7 +35,8 @@ function Home() {
             >
                 {products.map((product) => (
                     <ProductCard
-                        key={product.id} 
+                        key={product.id}
+                        id={product.id}
                         src={product.images[0].src}
                         name={product.name}
                         price={product.price}

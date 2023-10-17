@@ -1,9 +1,12 @@
 import React from "react";
+import { useDispatch } from 'react-redux';
+import { cartItemsActions } from '../../store/cartItem';
 import classes from "./ProductCard.module.scss"
 import { Button } from "react-bootstrap";
 import { ProductCardProps } from "./ProductCard.interface";
 
-function ProductCard({ 
+function ProductCard({
+    id, 
     src, 
     name, 
     price, 
@@ -11,10 +14,24 @@ function ProductCard({
     sale_price 
 }: ProductCardProps) {
 
+    const dispatch = useDispatch();
     let salesIndicatorClasses = classes.salesIndicator;
     if (!sale_price) {
         salesIndicatorClasses = `${classes.salesIndicator} ${classes.salesIndicatorHidden}`
     }
+    
+    function addItemToCart() {
+        const payload = {
+            id,
+            name,
+            price,
+            quantity: 1
+
+        }
+        dispatch(cartItemsActions.addCartItem(payload));
+    }
+
+
 
     return (
         <div data-testid="product-card" className="card">
@@ -28,7 +45,7 @@ function ProductCard({
                     )}
                     <span data-testid="current-price" className={classes.currentPrice}>${ price }</span>
                 </div>
-                <Button className={`btn btn-light ${classes.addToCartBtn}`}>Add to cart</Button>
+                <Button className={`btn btn-light ${classes.addToCartBtn}`} onClick={addItemToCart}>Add to cart</Button>
             </div>
         </div>
     );
