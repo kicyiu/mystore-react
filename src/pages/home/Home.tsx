@@ -11,16 +11,16 @@ function Home() {
 
     const [products, setProducts] = useState<GetProductsRequest[]>([]);
 
-
     useEffect(() => {
+        async function fetchProducts() {
+            const { data } = await axios.get('http://localhost:8000/products');
+            setProducts(data);
+        }
+
         fetchProducts();
     }, []);
 
-    const fetchProducts = async () => {
-
-        const { data } = await axios.get('http://localhost:8000/products');
-        setProducts(data);
-    }
+    
 
     return (
         <Fragment >

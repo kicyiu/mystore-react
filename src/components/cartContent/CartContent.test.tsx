@@ -7,7 +7,7 @@ describe('CartContent', () => {
 
     const props: CartContentProps = {
         itemsCount: 2,
-        totalAmount: 100
+        totalAmount: '100'
     }
 
     it("should contain 'basket-shopping' cart icon", () => {

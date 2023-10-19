@@ -1,4 +1,4 @@
 export interface CartContentProps {
     itemsCount: number;
-    totalAmount: number;
+    totalAmount: string;
 }
